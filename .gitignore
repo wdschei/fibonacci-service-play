@@ -26,6 +26,9 @@ gradle-app.setting
 # SBT/Giter8
 .g8
 
+# Play framework
+logs
+
 ## generic files to ignore
 *~
 *.lock
