@@ -1,0 +1,36 @@
+## java specific
+!.gitignore
+*.lic
+**/target/
+
+## vim objects
+*.swo
+*.swp
+
+## IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+local/
+classes/
+
+# Gradle bits from: https://github.com/github/gitignore/blob/master/Gradle.gitignore
+.gradle
+build/
+.gradletasknamecache
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# SBT/Giter8
+.g8
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+jmeter.log
+tmp
