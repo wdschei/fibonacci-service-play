@@ -36,9 +36,11 @@ import java.util.Arrays;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.util.MimeTypeUtils.*;
 import static play.mvc.Http.HeaderNames.ACCEPT;
+import static play.mvc.Http.HeaderNames.CONTENT_ENCODING;
 import static play.mvc.Http.Status.BAD_REQUEST;
 import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.GET;
+import static play.test.Helpers.PUT;
 import static play.test.Helpers.route;
 
 /**
