@@ -27,7 +27,8 @@ gradle-app.setting
 .g8
 
 # Play framework
-logs
+logs/
+out/
 
 ## generic files to ignore
 *~
