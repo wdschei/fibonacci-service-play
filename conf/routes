@@ -7,3 +7,9 @@ GET     /                           controllers.HomeController.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# These are the Fibonacci Service endpoints
+GET     /fibonacci                  com.thescheideggers.fibonacciservice.FibonacciController.getFibonacciString(length = com.thescheideggers.fibonacciservice.FibonacciImpl.LEN_MAX_STRING)
+GET     /fibonacci/*len             com.thescheideggers.fibonacciservice.FibonacciController.getFibonacciString(len: String)
+GET     /fibonacciArray             com.thescheideggers.fibonacciservice.FibonacciController.getFibonacciArray(length = com.thescheideggers.fibonacciservice.FibonacciImpl.LEN_MAX_STRING)
+GET     /fibonacciArray/*len        com.thescheideggers.fibonacciservice.FibonacciController.getFibonacciArray(len: String)
