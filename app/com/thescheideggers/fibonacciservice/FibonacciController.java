@@ -126,22 +126,6 @@ public class FibonacciController extends Controller {
                             status = INTERNAL_SERVER_ERROR;
                         }
                         break;
-                    case TEXT_HTML_VALUE:
-                        Object value = fibonacciResponse.getValue();
-                        String body;
-                        if (value instanceof String) {
-                            body = String.format("<html><body>%s</body></html>", (String) value);
-                        } else if (value instanceof long[]) {
-                            body = String.format("<html><body>%s</body></html>", Arrays.toString((long[]) value));
-                        } else {
-                            body = "Failed to write HTML";
-                            status = INTERNAL_SERVER_ERROR;
-                        }
-                        httpEntity = HttpEntity.fromString(
-                                body,
-                                "utf-8")
-                                .as(acceptType);
-                        break;
                     case APPLICATION_XML_VALUE:
                     case TEXT_XML_VALUE:
                         try {
@@ -161,12 +145,29 @@ public class FibonacciController extends Controller {
                             status = INTERNAL_SERVER_ERROR;
                         }
                         break;
+                    case TEXT_HTML_VALUE:
                     default:
+                        Object value = fibonacciResponse.getValue();
+                        String body;
+                        if (value instanceof String) {
+                            body = String.format("<html><body>%s</body></html>", (String) value);
+                        } else if (value instanceof long[]) {
+                            body = String.format("<html><body>%s</body></html>", Arrays.toString((long[]) value));
+                        } else {
+                            body = "Failed to write HTML";
+                            status = INTERNAL_SERVER_ERROR;
+                        }
                         httpEntity = HttpEntity.fromString(
-                                "Unsupported Media Type",
+                                body,
                                 "utf-8")
-                                .as("text/plain");
-                        status = UNSUPPORTED_MEDIA_TYPE;
+                                .as(TEXT_HTML_VALUE);
+                    //    break;
+                    //default:
+                    //    httpEntity = HttpEntity.fromString(
+                    //            "Unsupported Media Type",
+                    //            "utf-8")
+                    //            .as("text/plain");
+                    //    status = UNSUPPORTED_MEDIA_TYPE;
                 }
                 break;
             case UNSUPPORTED_MEDIA_TYPE:
