@@ -43,3 +43,56 @@ dependencies {
         play "com.typesafe.play:${playModule}_$scalaVersion:$playVersion"
     }
 }
+
+idea.module {
+    // Source directories
+    sourceDirs += file('app')
+    testSourceDirs += file('test')
+    // Generated sources
+    def generated = [
+            file("$buildDir/playBinary/src/compilePlayBinaryRoutes"),
+            file("$buildDir/playBinary/src/compilePlayBinaryTwirlTemplates")
+    ]
+    generated.each { src ->
+        sourceDirs += src
+        generatedSourceDirs += src
+    }
+    // Output directories
+    outputDir = file("$buildDir/playBinary/classes")
+    testOutputDir = file("$buildDir/playBinary/testClasses")
+    // Excluded dirs
+    excludeDirs -= buildDir
+    excludeDirs += [
+            outputDir,
+            testOutputDir,
+            file("$buildDir/playBinary/lib"),
+            file("$buildDir/playBinary/reports"),
+            file("$buildDir/playBinary/results"),
+            file("$buildDir/tmp"),
+            file("$buildDir/assets")
+    ]
+    // Dependencies
+    scopes.COMPILE = ['plus': [configurations.play]]
+    scopes.TEST = ['plus': [configurations.playTest]]
+    iml.withXml { provider ->
+        def content = provider.node.component.content.first()
+        // Resources
+        def confUrl = 'file://$MODULE_DIR$/conf'
+        def confAttrs = content.find { it.@url == confUrl }?.attributes()
+        if (confAttrs) {
+            confAttrs.remove('isTestSource')
+            confAttrs.type = 'java-resource'
+        } else {
+            content.appendNode('sourceFolder', [url: confUrl, type: 'java-resource'])
+        }
+        // Test resources
+        def testResourcesUrl = 'file://$MODULE_DIR$/test/resources'
+        def testResourcesAttrs = content.find { it.@url == testResourcesUrl }?.attributes()
+        if (testResourcesAttrs) {
+            testResourcesAttrs.remove('isTestSource')
+            testResourcesAttrs.type = 'java-test-resource'
+        } else {
+            content.appendNode('sourceFolder', [url: testResourcesUrl, type: 'java-resource'])
+        }
+    }
+}
