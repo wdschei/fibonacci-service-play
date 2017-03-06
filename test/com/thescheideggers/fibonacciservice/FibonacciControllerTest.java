@@ -434,182 +434,182 @@ public class FibonacciControllerTest extends WithApplication {
         Logger.trace("Finished.");
     }
 
-//    /**
-//     * Test of putFibonacciString method of class FibonacciController with a Positive arg and expecting XML.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciString_XML_Positive() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacci")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_XML_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(OK, result.status());
-//        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
-//        Document dom = getResultBodyAsDocument(result);
-//        assertEquals(KAT_05_STRING, XPath.selectText("/FibonacciResponse/value", dom));
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciString method of class FibonacciController with a Positive arg and expecting JSON.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciString_JSON_Positive() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacci")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_JSON_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(OK, result.status());
-//        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
-//        JsonNode json = getResultBodyAsJsonNode(result);
-//        assertEquals(KAT_05_STRING, json.get("value").asText());
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciString method of class FibonacciController with a Negative arg and expecting XML.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciString_XML_Negative() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacci")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_XML_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(BAD_REQUEST, result.status());
-//        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
-//        Document dom = getResultBodyAsDocument(result);
-//        assertEquals(ERR_MSG_NEG, XPath.selectText("/FibonacciResponse/value", dom));
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciString method of class FibonacciController with a Negative arg and expecting JSON.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciString_JSON_Negative() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacci")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_JSON_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(BAD_REQUEST, result.status());
-//        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
-//        assertEquals(ERR_MSG_NEG, getResultBodyAsString(result));
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciArray method of class FibonacciController with a Positive arg and expecting XML.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciArray_XML_Positive() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacciArray")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_XML_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(OK, result.status());
-//        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
-//        Document dom = getResultBodyAsDocument(result);
-//        assertEquals(KAT_05_STRING, XPath.selectText("/FibonacciResponse/value", dom));
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciArray method of class FibonacciController with a Positive arg and expecting JSON.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciArray_JSON_Positive() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacciArray")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_JSON_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(OK, result.status());
-//        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
-//        JsonNode json = getResultBodyAsJsonNode(result);
-//        for (int i = 0; i < KAT_05_ARRAY.length; ++i) {
-//            // TODO: FIX_THIS
-//            //actions.andExpect(jsonPath("$.value[" + i + "]").value(KAT_05_ARRAY[i]));
-//        }
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciArray method of class FibonacciController with a Negative arg and expecting XML.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciArray_XML_Negative() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacciArray")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_XML_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(BAD_REQUEST, result.status());
-//        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
-//        Document dom = getResultBodyAsDocument(result);
-//        assertEquals(ERR_MSG_NEG, XPath.selectText("/FibonacciResponse/value", dom));
-//        Logger.trace("Finished.");
-//    }
-//
-//    /**
-//     * Test of putFibonacciArray method of class FibonacciController with a Negative arg and expecting JSON.
-//     */
-//    @Test
-//    @Ignore
-//    public void testPutFibonacciArray_JSON_Negative() throws Exception {
-//        Logger.trace("Starting...");
-//        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
-//        Http.RequestBuilder request = new Http.RequestBuilder()
-//                .method(PUT)
-//                .uri("/fibonacciArray")
-//                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
-//                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
-//                .header(ACCEPT, APPLICATION_JSON_VALUE);
-//        Result result = route(app, request);
-//        assertEquals(BAD_REQUEST, result.status());
-//        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
-//        assertEquals(ERR_MSG_NEG, getResultBodyAsString(result));
-//        Logger.trace("Finished.");
-//    }
+    /**
+     * Test of putFibonacciString method of class FibonacciController with a Positive arg and expecting XML.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciString_XML_Positive() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacci")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_XML_VALUE);
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
+        Document dom = getResultBodyAsDocument(result);
+        assertEquals(KAT_05_STRING, XPath.selectText("/FibonacciResponse/value", dom));
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciString method of class FibonacciController with a Positive arg and expecting JSON.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciString_JSON_Positive() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacci")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE);
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
+        JsonNode json = getResultBodyAsJsonNode(result);
+        assertEquals(KAT_05_STRING, json.get("value").asText());
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciString method of class FibonacciController with a Negative arg and expecting XML.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciString_XML_Negative() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacci")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_XML_VALUE);
+        Result result = route(app, request);
+        assertEquals(BAD_REQUEST, result.status());
+        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
+        Document dom = getResultBodyAsDocument(result);
+        assertEquals(ERR_MSG_NEG, XPath.selectText("/FibonacciResponse/value", dom));
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciString method of class FibonacciController with a Negative arg and expecting JSON.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciString_JSON_Negative() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacci")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE);
+        Result result = route(app, request);
+        assertEquals(BAD_REQUEST, result.status());
+        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
+        assertEquals(ERR_MSG_NEG, getResultBodyAsString(result));
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciArray method of class FibonacciController with a Positive arg and expecting XML.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciArray_XML_Positive() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacciArray")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_XML_VALUE);
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
+        Document dom = getResultBodyAsDocument(result);
+        assertEquals(KAT_05_STRING, XPath.selectText("/FibonacciResponse/value", dom));
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciArray method of class FibonacciController with a Positive arg and expecting JSON.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciArray_JSON_Positive() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(5);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacciArray")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE);
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
+        JsonNode json = getResultBodyAsJsonNode(result);
+        for (int i = 0; i < KAT_05_ARRAY.length; ++i) {
+            // TODO: FIX_THIS
+            //actions.andExpect(jsonPath("$.value[" + i + "]").value(KAT_05_ARRAY[i]));
+        }
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciArray method of class FibonacciController with a Negative arg and expecting XML.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciArray_XML_Negative() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacciArray")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_XML_VALUE);
+        Result result = route(app, request);
+        assertEquals(BAD_REQUEST, result.status());
+        assertEquals(APPLICATION_XML_VALUE, result.contentType().get());
+        Document dom = getResultBodyAsDocument(result);
+        assertEquals(ERR_MSG_NEG, XPath.selectText("/FibonacciResponse/value", dom));
+        Logger.trace("Finished.");
+    }
+
+    /**
+     * Test of putFibonacciArray method of class FibonacciController with a Negative arg and expecting JSON.
+     */
+    @Test
+    @Ignore
+    public void testPutFibonacciArray_JSON_Negative() throws Exception {
+        Logger.trace("Starting...");
+        final FibonacciRequest fibonacciRequest = new FibonacciRequest(-1);
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(PUT)
+                .uri("/fibonacciArray")
+                .bodyRaw(FibonacciUtil.toBytes(fibonacciRequest))
+                .header(CONTENT_ENCODING, APPLICATION_OCTET_STREAM_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE);
+        Result result = route(app, request);
+        assertEquals(BAD_REQUEST, result.status());
+        assertEquals(APPLICATION_JSON_VALUE, result.contentType().get());
+        assertEquals(ERR_MSG_NEG, getResultBodyAsString(result));
+        Logger.trace("Finished.");
+    }
 
     private static String getResultBodyAsString(Result result) {
         return ((play.http.HttpEntity.Strict) result.body()).data().decodeString(StandardCharsets.UTF_8);
